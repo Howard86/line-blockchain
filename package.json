@@ -1,10 +1,18 @@
 {
   "name": "line-blockchain",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Demo project with nestjs for LINE Blockchain",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Howard86/line-blockchain"
+  },
+  "author": "Howard Tai <howard@howardism.dev>",
   "private": true,
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Howard86/line-blockchain/issues"
+  },
+  "homepage": "https://github.com/Howard86/line-blockchain",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
