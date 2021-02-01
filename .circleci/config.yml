@@ -1,0 +1,51 @@
+jobs:
+  build:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore NPM Package Cache
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
+      - save_cache:
+          name: Save NPM Package Cache
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+  test:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore NPM Package Cache
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Run linter
+          command: npm run lint
+      - run:
+          name: Run styling
+          command: npm run format
+      - run:
+          name: Run unit tests
+          command: npm test
+      - run:
+          name: Run nest build
+          command: npm run build
+orbs:
+  node: circleci/node@4.1.0
+version: 2.1
+workflows:
+  conventional-check:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
