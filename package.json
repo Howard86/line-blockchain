@@ -13,6 +13,9 @@
     "url": "https://github.com/Howard86/line-blockchain/issues"
   },
   "homepage": "https://github.com/Howard86/line-blockchain",
+  "engines": {
+    "node": "14.15.4"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
