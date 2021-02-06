@@ -1,6 +1,6 @@
 {
   "name": "line-blockchain",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Demo project with nestjs for LINE Blockchain",
   "repository": {
     "type": "git",
