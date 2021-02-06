@@ -21,6 +21,8 @@
     "build": "nest build",
     "check": "npm run type-check && npm run lint && npm run format",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "migrate": "prisma migrate dev --preview-feature",
+    "generate": "prisma generate",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
