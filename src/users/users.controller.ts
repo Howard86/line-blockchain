@@ -22,21 +22,24 @@ export class UsersController {
 
   @Get()
   findAll() {
-    return this.usersService.findAll();
+    return this.usersService.findAll({});
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(parseInt(id, 10));
+    return this.usersService.findOne({ id: parseInt(id, 10) });
   }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(parseInt(id, 10), updateUserDto);
+    return this.usersService.update({
+      where: { id: parseInt(id, 10) },
+      data: updateUserDto,
+    });
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(parseInt(id, 10));
+    return this.usersService.remove({ id: parseInt(id, 10) });
   }
 }
