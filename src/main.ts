@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { AppModule } from './app.module';
-import { PrismaFilter } from './database/prisma.filter';
+import { AllExceptionFilter } from './all-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -14,7 +14,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  app.useGlobalFilters(new PrismaFilter());
+  app.useGlobalFilters(new AllExceptionFilter());
   app.useStaticAssets(setUrl('public'));
   app.setBaseViewsDir(setUrl('views'));
   app.setViewEngine('hbs');
