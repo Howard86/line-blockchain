@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/Howard86/line-blockchain",
   "engines": {
-    "node": "14.15.4"
+    "node": "14.15.*"
   },
   "scripts": {
     "prebuild": "rimraf dist",
